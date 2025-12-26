@@ -18,3 +18,45 @@ Modelos de dados para prática
 ### `lib/services/`
 Camada de serviços e lógica de negócio
 
+### `lib/screens/`
+Exemplos de telas e interfaces
+
+### `bin/`
+Ponto de entrada da aplicação (`main.dart`)
+
+### `test/`
+Testes unitários
+
+## 🚀 Como Executar
+
+Para executar o projeto:
+
+```bash
+dart run bin/main.dart
+```
+
+Para executar exemplos específicos:
+
+```bash
+dart run lib/dart_basico/fundamentos/tipos_basicos_1.dart
+dart run lib/dart_basico/funcao/map_reduce_1.dart
+```
+
+## 📖 Tópicos Estudados
+
+- ✅ Tipos básicos e variáveis
+- ✅ Operadores e expressões
+- ✅ Estruturas de controle
+- ✅ Funções e programação funcional
+- ✅ Programação Orientada a Objetos
+- ✅ Generics
+- ✅ Map, Filter e Reduce
+
+## 🛠️ Tecnologias
+
+- **Dart**: Linguagem de programação
+- **Dart SDK**: Kit de desenvolvimento
+
+## 📝 Notas
+
+Este é um projeto de aprendizado pessoal, onde exploro diferentes recursos e padrões da linguagem Dart.
