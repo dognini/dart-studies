@@ -6,7 +6,7 @@ import 'package:dart_assincronismo/api_key.dart';
 import 'package:dart_assincronismo/models/account.dart';
 
 class AccountService {
-  final String url = "https://api.github.com.br/gists/7b180c71fd11e3f9cdde1b2779475fa5";
+  final String url = urlApi;
 
   final StreamController<String> _streamController = StreamController<String>();
   Stream<String> get streamInfos => _streamController.stream;
@@ -32,10 +32,13 @@ class AccountService {
     return listAccounts;
   }
 
-  addAccount(Account account) async {
+  Future<void> addAccount(Account account) async {
     List<Account> listAccounts = await getAll();
     listAccounts.add(account);
+    save(listAccounts, accountName: account.name);
+  }
 
+  Future<void> save(List<Account> listAccounts, {String accountName = ""}) async {
     List<Map<String, dynamic>> listContent = [];
 
     for (Account account in listAccounts) {
@@ -57,11 +60,9 @@ class AccountService {
     );
 
     if (response.statusCode.toString()[0] == "2") {
-      _streamController.add(
-        "${DateTime.now()} - Requisição de escrita bem sucedida! (${account.name})",
-      );
+      _streamController.add("${DateTime.now()} - Requisição de escrita bem sucedida!)");
     } else {
-      _streamController.add("${DateTime.now()} - Requisição de escrita falhou. (${account.name})");
+      _streamController.add("${DateTime.now()} - Requisição de escrita falhou.");
     }
   }
 

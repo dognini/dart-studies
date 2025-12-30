@@ -5,12 +5,14 @@ class Account {
   String name;
   String lastName;
   double balance;
+  String? accountType;
 
   Account({
     required this.id,
     required this.name,
     required this.lastName,
     required this.balance,
+    required this.accountType,
   });
 
   factory Account.fromMap(Map<String, dynamic> map) {
@@ -19,6 +21,7 @@ class Account {
       name: map['name'],
       lastName: map['lastName'],
       balance: map['balance'],
+      accountType: (map['accountType'] != null) ? map['accountType'] as String : null,
     );
   }
 
@@ -28,31 +31,33 @@ class Account {
       'name': name,
       'lastName': lastName,
       'balance': balance,
+      'accountType': accountType,
     };
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Account.fromJson(String source) =>
-      Account.fromMap(json.decode(source));
+  factory Account.fromJson(String source) => Account.fromMap(json.decode(source));
 
   Account copyWith({
     String? id,
     String? name,
     String? lastName,
     double? balance,
+    String? accountType,
   }) {
     return Account(
       id: id ?? this.id,
       name: name ?? this.name,
       lastName: lastName ?? this.lastName,
       balance: balance ?? this.balance,
+      accountType: accountType ?? this.accountType,
     );
   }
 
   @override
   String toString() {
-    return 'Conta $id: $name $lastName, saldo: $balance';
+    return 'Conta $id: $name $lastName, saldo: $balance, tipo: $accountType';
   }
 
   @override
@@ -65,7 +70,8 @@ class Account {
         other.id == id &&
         other.name == name &&
         other.lastName == lastName &&
-        other.balance == balance;
+        other.balance == balance &&
+        other.accountType == accountType;
   }
 
   @override
